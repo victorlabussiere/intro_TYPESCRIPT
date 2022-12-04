@@ -2,6 +2,8 @@ const assert = require('assert')
 const Hello = require('./../src/1.helloWorld/app.js')
 const TypeAnnotation = require('../src/2.typeAnnotation/app.js')
 const Tupla = require('../src/3.tuplas/tuple')
+const aulaInterface = require('../src/5.interface/interface')
+
 
 describe('Suite de testes Typescript', function () {
     const DEFAULT_CORRETO = ['Victor', 'Javascript', 27]
@@ -36,5 +38,17 @@ describe('Suite de testes Typescript', function () {
         const tipoCorreto = 'string'
         const result = Tupla.acessaIndex(DEFAULT_CORRETO, 1)
         assert.deepEqual(typeof result, tipoCorreto)
+    })
+
+    it('Deve testar o tipo do objetco criado com o recurso "interface" do Typescript', () => {
+        const DEFAULT_INTERFACE = {
+            firstName: 'Victor',
+            lastName: 'Labussiere'
+        }
+
+        const Interface = new aulaInterface(DEFAULT_INTERFACE)
+        const result = Interface.exibeObj()
+        assert.ok(result.fullName === DEFAULT_INTERFACE.firstName + " " + DEFAULT_INTERFACE.lastName)
+        assert.deepEqual(typeof result.fullName, 'string')
     })
 })
