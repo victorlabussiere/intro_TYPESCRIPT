@@ -5,12 +5,8 @@
 // Suporta númericos baseado em strings
 var Idiomas;
 (function (Idiomas) {
-    Idiomas["Portugues"] = "Portugues";
-    Idiomas["Espanhol"] = "Espanhol";
-    Idiomas["Italiano"] = "Italiano";
-    Idiomas["Japones"] = "Japones";
+    Idiomas[Idiomas["Portugues"] = 0] = "Portugues";
+    Idiomas[Idiomas["Espanhol"] = 1] = "Espanhol";
+    Idiomas[Idiomas["Italiano"] = 2] = "Italiano";
+    Idiomas[Idiomas["Japones"] = 3] = "Japones";
 })(Idiomas || (Idiomas = {}));
-console.log('enum idiomas', Idiomas);
-class Enums {
-}
-module.exports = Enums;

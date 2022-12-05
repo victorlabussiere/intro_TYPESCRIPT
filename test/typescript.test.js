@@ -2,11 +2,17 @@ const assert = require('assert')
 const Hello = require('./../src/1.helloWorld/app.js')
 const TypeAnnotation = require('../src/2.typeAnnotation/app.js')
 const Tupla = require('../src/3.tuplas/tuple')
-const aulaInterface = require('../src/5.interface/interface')
+const ExemploInterface = require('../src/5.interface/interface')
+const ExemploClasses = require('../src/6.classes/classesTypescript')
 
 
 describe('Suite de testes Typescript', function () {
-    const DEFAULT_CORRETO = ['Victor', 'Javascript', 27]
+    const PESSOA_DEFAULT = ['Victor', 'Javascript', 27]
+
+    const NOME_DEFAULT = {
+        firstName: 'Victor',
+        lastName: 'Labussiere'
+    }
 
     const nome = 'Victor'
     const animais = ['cabra', 'gato', 'cachorro']
@@ -28,7 +34,7 @@ describe('Suite de testes Typescript', function () {
     })
 
     it('Deve retornar um array com os tipos corretos', () => {
-        const TUPLA = Tupla.exibeTupla(DEFAULT_CORRETO)
+        const TUPLA = Tupla.exibeTupla(PESSOA_DEFAULT)
         const result = [typeof TUPLA[0], typeof TUPLA[1], typeof TUPLA[2]]
         const expected = ['string', 'string', 'number']
         assert.deepEqual(expected, result)
@@ -36,19 +42,21 @@ describe('Suite de testes Typescript', function () {
 
     it('Deve retornar o tipo correto da sua posição', () => {
         const tipoCorreto = 'string'
-        const result = Tupla.acessaIndex(DEFAULT_CORRETO, 1)
+        const result = Tupla.acessaIndex(PESSOA_DEFAULT, 1)
         assert.deepEqual(typeof result, tipoCorreto)
     })
 
     it('Deve testar o tipo do objetco criado com o recurso "interface" do Typescript', () => {
-        const DEFAULT_INTERFACE = {
-            firstName: 'Victor',
-            lastName: 'Labussiere'
-        }
 
-        const Interface = new aulaInterface(DEFAULT_INTERFACE)
-        const result = Interface.exibeObj()
-        assert.ok(result.fullName === DEFAULT_INTERFACE.firstName + " " + DEFAULT_INTERFACE.lastName)
+        const Interface = ExemploInterface
+        const result = Interface(NOME_DEFAULT)
+        assert.ok(result.fullName === NOME_DEFAULT.firstName + " " + NOME_DEFAULT.lastName)
         assert.deepEqual(typeof result.fullName, 'string')
+    })
+
+    it('Deve retornar um nome e sobreonome', () => {
+        const ClassTS = new ExemploClasses(NOME_DEFAULT.firstName, NOME_DEFAULT.lastName)
+        const result = ClassTS.nomeCompleto()
+        assert.ok(result === `${NOME_DEFAULT.firstName} ${NOME_DEFAULT.lastName}`)
     })
 })

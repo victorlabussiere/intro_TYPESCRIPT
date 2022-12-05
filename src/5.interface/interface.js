@@ -1,14 +1,12 @@
 "use strict";
-class Interface {
-    constructor(pessoa) {
-        this.Pessoa = {
-            firstName: pessoa.firstName,
-            lastName: pessoa.lastName,
-            fullName: `${pessoa.firstName} ${pessoa.lastName}`
-        };
-    }
-    exibeObj() {
-        return this.Pessoa;
-    }
+let pessoa = {
+    firstName: 'Victor',
+    lastName: "Labussiere"
+};
+function exemploInterface(param) {
+    return {
+        ...param,
+        fullName: `${param.firstName} ${param.lastName}`
+    };
 }
-module.exports = Interface;
+module.exports = exemploInterface;

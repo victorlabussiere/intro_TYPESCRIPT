@@ -1,27 +1,24 @@
-interface Pessoa {
+interface Nomes {
     firstName: string;
     lastName: string
 }
 
-interface IntExample {
+interface NomeCompleto {
     firstName: string;
     lastName: string;
     fullName: string;
 }
 
-class Interface {
-    Pessoa: IntExample;
-    constructor(pessoa: Pessoa) {
-        this.Pessoa = {
-            firstName: pessoa.firstName,
-            lastName: pessoa.lastName,
-            fullName: `${pessoa.firstName} ${pessoa.lastName}`
-        }
-    }
+let pessoa: Nomes = {
+    firstName: 'Victor',
+    lastName: "Labussiere"
+}
 
-    exibeObj() {
-        return this.Pessoa
+function exemploInterface(param: Nomes): NomeCompleto {
+    return {
+        ...param,
+        fullName: `${param.firstName} ${param.lastName}`
     }
 }
 
-module.exports = Interface
+module.exports = exemploInterface

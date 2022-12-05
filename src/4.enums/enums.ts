@@ -3,14 +3,8 @@
 // Objetos com chaves fixas em tempo de compilação para que o TS possa verificar se chave fornecidade realmente existe.
 // Suporta númericos baseado em strings
 enum Idiomas {
-    Portugues = 'Portugues',
-    Espanhol = 'Espanhol',
-    Italiano = 'Italiano',
-    Japones = 'Japones'
+    Portugues,
+    Espanhol,
+    Italiano,
+    Japones
 }
-console.log('enum idiomas', Idiomas);
-
-class Enums {
-}
-
-module.exports = Enums
